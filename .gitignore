@@ -1,2 +1,6 @@
 .vscode/
+_build/
+htmlcov/
 __pycache__
+.coverage
+coverage.xml
