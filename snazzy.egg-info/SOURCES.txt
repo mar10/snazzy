@@ -1,0 +1,11 @@
+LICENSE
+README.md
+pyproject.toml
+setup.cfg
+setup.py
+snazzy.egg-info/PKG-INFO
+snazzy.egg-info/SOURCES.txt
+snazzy.egg-info/dependency_links.txt
+snazzy.egg-info/not-zip-safe
+snazzy.egg-info/requires.txt
+snazzy.egg-info/top_level.txt
