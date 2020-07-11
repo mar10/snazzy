@@ -190,7 +190,6 @@ class Snazzy:
     @classmethod
     def enable(cls, flag, force=False):
         if flag and not force and not sys.stdout.isatty():
-            print("SSS", sys.stdout.isatty())
             flag = False
 
         if flag:
