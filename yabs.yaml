@@ -11,7 +11,7 @@ config:
     - type: __version__     # First entry is master for synchronizing
       file: snazzy.py
   max_increment: patch
-  branches:                 # Allowed git branches
+  branches:                  # Allowed git branches
     - master
 
 
