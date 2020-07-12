@@ -1,6 +1,6 @@
 # snazzy
 
-> Stylish ANSI terminal colors.
+> Stylish ANSI terminal colors and helpers.
 
 [![Build Status](https://travis-ci.org/mar10/snazzy.svg?branch=master)](https://travis-ci.org/mar10/snazzy)
 [![Latest Version](https://img.shields.io/pypi/v/snazzy.svg)](https://pypi.python.org/pypi/snazzy/)
@@ -18,8 +18,6 @@ enable_colors()
 
 print("That looks " + green("good") + ", right?")
 ```
-
-<!-- That looks <span style="color: green;">good</span>, right? -->
 
 ![looks good](https://github.com/mar10/snazzy/raw/master/tests/that_looks_good.png)
 
@@ -127,6 +125,19 @@ from snazzy import red, enable_colors
 
 assert red("error") == "error"
 
-enable_colors(True, True)
+enable_colors(True)
 assert red("error") == "\x1b[91merror\x1b[39m"
 ```
+
+### Emojis
+
+The `emoji(s, fallback)` method allows to emit emojis and other fancy unicode
+characters, but fallback to a replacement string if the terminal does not
+support this.
+
+```py
+msg = "{} this is a bug.".format(emoji("❌", red("X")))
+```
+
+**Note:** Currently we assume that Windows does not support emojis, but
+other terminals do.

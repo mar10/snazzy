@@ -2,7 +2,7 @@
 # (c) 2020 Martin Wendt and contributors; see https://github.com/mar10/snazzy
 # Licensed under the MIT license: https://www.opensource.org/licenses/mit-license.php
 """
-Simple helper for colored terminal output.
+Stylish ANSI terminal colors and helpers.
 
 Examples:
     from snazzy import enable_colors, red
@@ -130,19 +130,6 @@ def rgb_bg(r, g, b):
     return "\x1b[48;2;{};{};{}m".format(r, g, b)
 
 
-# In 2016, Microsoft released the Windows 10 Version 1511 update which unexpectedly
-# implemented support for ANSI escape sequences.[13] The change was designed to
-# complement the Windows Subsystem for Linux, adding to the Windows Console Host
-# used by Command Prompt support for character escape codes used by terminal-based
-# software for Unix-like systems.
-# This is not the default behavior and must be enabled programmatically with the
-#  Win32 API via SetConsoleMode(handle, ENABLE_VIRTUAL_TERMINAL_PROCESSING).[14]
-# This was enabled by CMD.EXE but not initially by PowerShell;[15] however,
-# Windows PowerShell 5.1 now enables this by default. The ability to make a
-# string constant containing ESC was added in PowerShell 6 with (for example)
-# "`e[32m";[16] for PowerShell 5 you had to use [char]0x1B+"[32m".
-
-
 class Snazzy:
     """
     This is basically a namespace, since the core functionality is implemented
@@ -199,7 +186,7 @@ class Snazzy:
 
         Args:
             flag (bool):
-            force (bool):
+            force (bool): True: enable even if isatty() is false
             support_emoji (bool, optional):
         """
         if flag and not force and not sys.stdout.isatty():
@@ -208,6 +195,8 @@ class Snazzy:
         if flag:
             cls._initialize()
         cls._enabled = flag
+        if support_emoji is not None:
+            cls._support_emoji = support_emoji
 
     @classmethod
     def is_enabled(cls):
@@ -231,10 +220,10 @@ class Snazzy:
             sl.append(EFFECT_MAP["reset_bg"])
         if bold:
             sl.append(EFFECT_MAP["reset_bold_dim"])
-        if underline:
-            sl.append(EFFECT_MAP["reset_underline"])
         if italic:
             sl.append(EFFECT_MAP["reset_italic"])
+        if underline:
+            sl.append(EFFECT_MAP["reset_underline"])
         res = "".join(sl)
         return res
 

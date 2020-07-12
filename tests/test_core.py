@@ -9,7 +9,9 @@ from io import StringIO
 
 from snazzy import (
     ansi,
+    ansi_reset,
     colors_enabled,
+    emoji,
     enable_colors,
     gray,
     green,
@@ -21,7 +23,7 @@ from snazzy import (
 
 
 class TestBasics:
-    def test_log(self):
+    def test_basics(self):
 
         assert not colors_enabled()
         assert red("error") == "error"
@@ -38,6 +40,8 @@ class TestBasics:
         assert wrap("foo", underline=True) == "\x1b[4mfoo\x1b[24m"
 
         assert ansi(bold=True) == "\x1b[1m"
+        assert ansi_reset() == "\x1b[0m"
+        assert ansi_reset(fg=False) == "\x1b[49m\x1b[22m\x1b[23m\x1b[24m"
 
         assert wrap("foo", (80, 80, 80)) == "\x1b[38;2;80;80;80mfoo\x1b[39m"
         assert wrap("foo", bg=(255, 255, 255)) == "\x1b[48;2;255;255;255mfoo\x1b[49m"
@@ -47,3 +51,6 @@ class TestBasics:
             print("foo", file=buf)
         buf.seek(0)
         assert buf.read() == "\x1b[91mfoo\n\x1b[39m"
+
+        # Result depends on platform
+        assert emoji("❌", "X")
