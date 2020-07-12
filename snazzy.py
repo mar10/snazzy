@@ -330,8 +330,15 @@ def gray(text):
     return wrap(text, "li_black")
 
 
-# if __name__ == "__main__":
+# def demo():
 #     enable_colors(True)
+
+#     with Snazzy("li_green", bg="black"):
+#         print("This is so eighties...")
+
+#     print()
+#     print("That looks " + green("good") + ", right?")
+#     print()
 
 #     with Snazzy("li_yellow", bg="blue"):
 #         print("yellow on blue")
@@ -352,10 +359,26 @@ def gray(text):
 #     print("before " + wrap("blue bold", "blue", bold=True) + " after")
 #     print("before " + wrap("red italic", "red", italic=True) + " after")
 
+#     sl = []
 #     for color in FG_MAP.keys():
-#         print(wrap(color, color), end=", ")
-#     print(".")
+#         if "reset" in color:
+#             continue
+#         sl.append(wrap(color, color))
+#     print("Foreground colors:\n{}".format(", ".join(sl)))
 
+#     sl = []
 #     for color in BG_MAP.keys():
-#         print(wrap(color, None, bg=color), end=", ")
-#     print(".")
+#         if "reset" in color:
+#             continue
+#         sl.append(wrap(color, bg=color))
+#     print("Background colors:\n{}".format(", ".join(sl)))
+
+#     sl = []
+#     sl.append(wrap("bold", bold=True))
+#     sl.append(wrap("italic", italic=True))
+#     sl.append(wrap("underline", underline=True))
+#     print("Effects:\n{}".format(", ".join(sl)))
+
+
+# if __name__ == "__main__":
+#     demo()

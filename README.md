@@ -19,7 +19,9 @@ enable_colors()
 print("That looks " + green("good") + ", right?")
 ```
 
-That looks <span style="color: green;">good</span>, right?
+<!-- That looks <span style="color: green;">good</span>, right? -->
+
+![looks good](https://github.com/mar10/snazzy/raw/master/tests/that_looks_good.png)
 
 Note two things:
 
@@ -41,20 +43,67 @@ print(wrap("white on blue", "white", bg="blue"))
 print(wrap("ERROR:", "yellow", bg="red", bold=True) + " that went wrong.")
 ```
 
-Alternative pattern 'context manager':
+Alternative pattern, using a context manager:
 
 ```py
 with Snazzy(fg="green", bg="black"))
     print("This is so eighties...")
 ```
 
-Alternative pattern 'explicit':
+The context manager pattern is syntactic sugar for for this explicit code:
 
 ```py
 print(ansi("green", bg="black"), end="")
 print("This is so eighties...")
 print(ansi_reset(), end="")
 ```
+
+### Available Formats
+
+#### Colors
+
+Color keys can be used as foreground or background using the `fg=COLOR` and
+`bg=COLOR` option respectively.<br>
+**Note:** Not all platforms implement all features
+[see here for an overview](https://en.wikipedia.org/wiki/ANSI_escape_code#Colors).
+
+These are well supported in most terminals:
+
+`"black"`, `"red"`, `"green"`, `"yellow"`, `"blue"`, `"magenta"`, `"cyan"`, `"white"`.
+
+These are less good supported:
+
+`"li_black"`, `"li_red"`, `"li_green"`, `"li_yellow"`, `"li_blue"`, `"li_magenta"`,
+`"li_cyan"`, `"li_white"`.
+
+These are less supported:
+
+`"da_black"`, `"da_red"`, `"da_green"`, `"da_yellow"`, `"da_blue"`, `"da_magenta"`,
+`"da_cyan"`, `"da_white"`.
+
+We can also pass *RGB* tuples like so if the platform supports it:
+```py
+print(wrap("white on blue", (255, 255, 255), bg=(0, 0, 200)))
+```
+
+#### Effects
+
+The following effects are available:
+
+`"bold"`, `"dim"`, `"italic"`, `"underline"`, `"blink"`, `"inverse"`, `"hidden"`,
+`"strike"`.
+
+(`"b"`, `"i"`, and `"u"` may be used as alias for bold, italic, and underline.)
+
+#### Format Reset
+
+The following codes reset distinct formattings to default values:
+
+`"reset_all"`, `"reset_fg"`, `"reset_bg"`, `"reset_bold_dim"`, `"reset_italic"`,
+`"reset_underline"`, `"reset_blink"`, `"reset_inverse"`, `"reset_hidden"`,
+`"reset_strike"`.
+
+(The `wrap()` methods appends this automatically to the wrapped text.)
 
 ### Enable Colors
 
