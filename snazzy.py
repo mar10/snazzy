@@ -176,9 +176,12 @@ class Snazzy:
 
         # TODO: this is an overly simple guess.
         cls._support_emoji = True
-        if sys.platform == "win32" and not os.environ.get("WT_SESSION"):
-            # Windows CMD and Powershell don't support emojis, but 'Windows Terminal' does
+        if not cls._initialized:
             cls._support_emoji = False
+        elif sys.platform == "win32":
+            # Windows CMD and Powershell don't support emojis, but 'Windows Terminal' does
+            if not os.environ.get("WT_SESSION"):
+                cls._support_emoji = False
         return
 
     # TODO:

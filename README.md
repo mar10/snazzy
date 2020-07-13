@@ -17,6 +17,7 @@ from snazzy import enable_colors, green, wrap
 enable_colors()
 
 print("That looks " + green("good") + ", right?")
+print(emoji(" ✨ 🍰 ✨", ":-)"))
 ```
 
 ![looks good](https://github.com/mar10/snazzy/raw/master/tests/that_looks_good.png)
@@ -136,7 +137,8 @@ characters, but fallback to a replacement string if the terminal does not
 support this.
 
 ```py
-msg = "{} this is a bug.".format(emoji("❌", red("X")))
+print("{} this is a bug.".format(emoji("❌", red("X"))))
+print(emoji("✨ 🍰 ✨", ":-)"))
 ```
 
 **Note:** Currently we assume that Windows does not support emojis, but
