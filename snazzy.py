@@ -15,7 +15,7 @@ import os
 import sys
 
 
-__version__ = "0.1.2"
+__version__ = "0.1.3-a0"
 
 
 # Foreground ANSI codes using SGR format:
