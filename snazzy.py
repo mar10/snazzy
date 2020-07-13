@@ -173,9 +173,13 @@ class Snazzy:
         # See https://github.com/feluxe/sty/issues/2
         if sys.platform == "win32":
             os.system("color")
-        # TODO: this is a dumb/pessimistic guess.
-        # The new Windows Terminal for example *will* support emojis, for example
-        cls._support_emoji = not sys.platform == "win32"
+
+        # TODO: this is an overly simple guess.
+        cls._support_emoji = True
+        if sys.platform == "win32" and not os.environ.get("WT_SESSION"):
+            # Windows CMD and Powershell don't support emojis, but 'Windows Terminal' does
+            cls._support_emoji = False
+        return
 
     # TODO:
     # https://docs.microsoft.com/en-us/windows/console/console-virtual-terminal-sequences
