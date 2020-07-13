@@ -17,7 +17,6 @@ from snazzy import enable_colors, green, wrap
 enable_colors()
 
 print("That looks " + green("good") + ", right?")
-print(emoji(" ✨ 🍰 ✨", ":-)"))
 ```
 
 ![looks good](https://github.com/mar10/snazzy/raw/master/tests/that_looks_good.png)
