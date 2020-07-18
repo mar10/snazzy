@@ -19,7 +19,6 @@ tasks:
   - task: check
     branches: master        # Current branch must be in this list
     can_push: true          # Test if 'git push' would/would not succeed
-    # connected: null         # TODO: internet available
     github: true            # GitHub repo name valid and online accessible
     clean: true             # Repo must/must not contain modifications
     os: null                # (str, list)
@@ -69,7 +68,6 @@ tasks:
       - sdist
       - bdist_wheel
     upload: true
-    # revert_bump_on_error: true
 
   # 'github_release': Create a release on GitHub
   - task: github_release
@@ -89,6 +87,7 @@ tasks:
 
   - task: commit
     add_known: true
+    # `[ci skip]´ tells travis to ignore
     message: |
       Bump prerelease ({version}) [ci skip]
 

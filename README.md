@@ -9,6 +9,8 @@
 [![Code style: black](https://img.shields.io/badge/code%20style-black-000000.svg)](https://github.com/ambv/black)
 [![StackOverflow: snazzy](https://img.shields.io/badge/StackOverflow-snazzy-blue.svg)](https://stackoverflow.com/questions/tagged/snazzy)
 
+![demo run](https://github.com/mar10/snazzy/raw/master/tests/snazzy.png)
+
 ## Usage
 
 ```py
@@ -57,8 +59,6 @@ print(ansi_reset(), end="")
 ```
 
 ### Available Formats
-
-![demo run](https://github.com/mar10/snazzy/raw/master/tests/snazzy.png)
 
 #### Colors
 
