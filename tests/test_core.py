@@ -11,6 +11,7 @@ from snazzy import (
     ansi,
     ansi_reset,
     colors_enabled,
+    demo,
     emoji,
     enable_colors,
     gray,
@@ -54,3 +55,6 @@ class TestBasics:
 
         # Result depends on platform
         assert emoji("❌", "X")
+
+    def test_coverage(self):
+        demo()

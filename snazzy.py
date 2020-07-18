@@ -161,6 +161,10 @@ class Snazzy:
         return self
 
     def __exit__(self, exc_type, exc_value, traceback):
+        # Note: if the previous output (inside the context manager) ended
+        # with `\n`, the next line may already be painted in the background color,
+        # so resetting might not work as expected.
+        # Caller could do an additional `print()` to fix this.
         print(self.reset(*self.format), end="", file=self.stream)
 
     @classmethod
@@ -349,55 +353,64 @@ def gray(text):
     return wrap(text, "li_black")
 
 
-# def demo():
-#     enable_colors(True)
+def demo():
+    def _dump(title, fg_color, bg_color):
+        COLUMNS = 8
+        sl = []
+        for color in FG_MAP.keys():
+            if "reset" in color:
+                continue
+            prefix = "\n" if len(sl) % COLUMNS == 0 else ""
+            fg = color if fg_color == "*" else fg_color
+            bg = color if bg_color == "*" else bg_color
+            text = "{:<10}".format(color)
+            text = wrap(text, fg=fg, bg=bg)
+            sl.append(prefix + wrap(text, color))
 
-#     with Snazzy("li_green", bg="black"):
-#         print("This is so eighties...")
+        print(wrap(title, "li_white", bold=True, underline=True), end="")
+        print(", ".join(sl))
+        print(Snazzy.reset_all())
 
-#     print()
-#     print("That looks " + green("good") + ", right?")
-#     print()
+    enable_colors(True)
 
-#     with Snazzy("li_yellow", bg="blue"):
-#         print("yellow on blue")
+    _dump("Foreground colors:", "*", None)
+    _dump("Background colors:", "black", "*")
 
-#     with Snazzy((255, 255, 0), bg=(0, 0, 255)):
-#         print("yellow on blue (rgb)")
+    sl = []
+    sl.append(wrap("bold", bold=True))
+    sl.append(wrap("italic", italic=True))
+    sl.append(wrap("underline", underline=True))
+    print(wrap("Effects", "li_white", bold=True, underline=True))
+    print("{}".format(", ".join(sl)))
+    print()
 
-#     with Snazzy("li_white", bg="black"):
-#         print("white on black")
+    print("That looks " + green("good") + ", right?")
+    print(wrap("ERROR:", "li_yellow", bg="red", bold=True) + " This is an error?")
 
-#     with Snazzy((255, 255, 255), bg="black"):
-#         print("white on black (rgb)")
+    with Snazzy("yellow", bg="black"):
+        print("This is so eighties...")
+    print()
 
-#     print("before " + red("reddish") + " after")
-#     print("before " + yellow("yellow") + " after")
-#     print("before " + wrap("yellow on blue", "yellow", bg="blue") + " after")
-#     print("before " + wrap("green underlined", "green", underline=True) + " after")
-#     print("before " + wrap("blue bold", "blue", bold=True) + " after")
-#     print("before " + wrap("red italic", "red", italic=True) + " after")
+    # with Snazzy("li_yellow", bg="blue"):
+    #     print("yellow on blue")
+    # print()
 
-#     sl = []
-#     for color in FG_MAP.keys():
-#         if "reset" in color:
-#             continue
-#         sl.append(wrap(color, color))
-#     print("Foreground colors:\n{}".format(", ".join(sl)))
+    # with Snazzy((255, 255, 0), bg=(0, 0, 255)):
+    #     print("yellow on blue (rgb)")
 
-#     sl = []
-#     for color in BG_MAP.keys():
-#         if "reset" in color:
-#             continue
-#         sl.append(wrap(color, bg=color))
-#     print("Background colors:\n{}".format(", ".join(sl)))
+    # with Snazzy("li_white", bg="black"):
+    #     print("white on black")
 
-#     sl = []
-#     sl.append(wrap("bold", bold=True))
-#     sl.append(wrap("italic", italic=True))
-#     sl.append(wrap("underline", underline=True))
-#     print("Effects:\n{}".format(", ".join(sl)))
+    # with Snazzy((255, 255, 255), bg="black"):
+    #     print("white on black (rgb)")
+
+    # # print("before " + red("reddish") + " after")
+    # # print("before " + yellow("yellow") + " after")
+    # print("before " + wrap("yellow on blue", "yellow", bg="blue") + " after")
+    # print("before " + wrap("green underlined", "green", underline=True) + " after")
+    # print("before " + wrap("blue bold", "blue", bold=True) + " after")
+    # print("before " + wrap("red italic", "red", italic=True) + " after")
 
 
-# if __name__ == "__main__":
-#     demo()
+if __name__ == "__main__":
+    demo()

@@ -58,6 +58,8 @@ print(ansi_reset(), end="")
 
 ### Available Formats
 
+![demo run](https://github.com/mar10/snazzy/raw/master/tests/snazzy.png)
+
 #### Colors
 
 Color keys can be used as foreground or background using the `fg=COLOR` and
