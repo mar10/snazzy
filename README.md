@@ -7,6 +7,7 @@
 [![License](https://img.shields.io/pypi/l/snazzy.svg)](https://github.com/mar10/snazzy/blob/master/LICENSE)
 [![Coverage Status](https://coveralls.io/repos/github/mar10/snazzy/badge.svg?branch=master)](https://coveralls.io/github/mar10/snazzy?branch=master)
 [![Code style: black](https://img.shields.io/badge/code%20style-black-000000.svg)](https://github.com/ambv/black)
+[![Released with: Yabs](https://img.shields.io/badge/released%20with-yabs-yellowgreen)](https://github.com/mar10/yabs)
 [![StackOverflow: snazzy](https://img.shields.io/badge/StackOverflow-snazzy-blue.svg)](https://stackoverflow.com/questions/tagged/snazzy)
 
 ![demo run](https://github.com/mar10/snazzy/raw/master/tests/snazzy.png)
