@@ -18,6 +18,14 @@ import sys
 __version__ = "0.1.3-a0"
 
 
+ANSI_ESCAPE_8BIT_STR = re.compile(
+    r"(?:\x1B[@-Z\\-_]|[\x80-\x9A\x9C-\x9F]|(?:\x1B\[|\x9B)[0-?]*[ -/]*[@-~])"
+)
+ANSI_ESCAPE_8BIT_BYTES = re.compile(
+    br"(?:\x1B[@-Z\\-_]|[\x80-\x9A\x9C-\x9F]|(?:\x1B\[|\x9B)[0-?]*[ -/]*[@-~])"
+)
+
+
 # Foreground ANSI codes using SGR format:
 _SGR_FG_COLOR_MAP = {
     "reset_all": 0,
@@ -290,6 +298,15 @@ class Snazzy:
         return text
 
     @classmethod
+    def cleanup(cls, s):
+        """Remove 7-bit and 8-bit C1 ANSI sequences."""
+        if isinstance(s, str):
+            res = ANSI_ESCAPE_8BIT_STR.sub("", s)
+        else:
+            res = ANSI_ESCAPE_8BIT_BYTES.sub(b"", s)
+        return res
+
+    @classmethod
     def emoji(cls, s, fallback="", force=None):
         """Return an emoji-string if the terminal supports it, fallback otherwise."""
         enable = cls._support_emoji if force is None else force
@@ -314,7 +331,13 @@ def colors_enabled():
     return Snazzy.is_enabled()
 
 
+def cleanup_ansi_codes(s):
+    """Remove 7-bit and 8-bit C1 ANSI sequences."""
+    return Snazzy.cleanup(s)
+
+
 def emoji(s, fallback="", force=None):
+    """Return an emoji-string if the terminal supports it, fallback otherwise."""
     return Snazzy.emoji(s, fallback, force)
 
 
