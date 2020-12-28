@@ -19,7 +19,7 @@ yabs = "*"
 [packages]
 
 [requires]
-python_version = "3.7"
+python_version = "3.9"
 
 [pipenv]
 # TODO: remove this when black and sty releases a real version

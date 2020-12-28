@@ -5,9 +5,8 @@
 """
 from io import StringIO
 
-# import pytest
-
 from snazzy import (
+    Snazzy,
     ansi,
     ansi_reset,
     colors_enabled,
@@ -19,8 +18,9 @@ from snazzy import (
     red,
     wrap,
     yellow,
-    Snazzy,
 )
+
+# import pytest
 
 
 class TestBasics:

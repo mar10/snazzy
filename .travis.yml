@@ -12,13 +12,15 @@ jobs:  # matrix:
         dist: xenial
       - python: "3.8"
         env: TOXENV=py38
-      - python: "3.9-dev"
+      - python: "3.9"
         env: TOXENV=py39
+      - python: "3.10-dev"
+        env: TOXENV=py310
   allow_failures:
-    - python: "3.9-dev"
-      env: TOXENV=py39
+    - python: "3.10-dev"
+      env: TOXENV=py310
 install:
-  - pip install tox-travis flake8 coveralls coverage
+  - pip install tox-travis flake8 isort coveralls coverage
 script:
   - tox
 after_success:
