@@ -15,7 +15,7 @@ import os
 import re
 import sys
 
-__version__ = "0.2.1-a1"
+__version__ = "0.2.1"
 
 
 ANSI_ESCAPE_8BIT_STR = re.compile(
