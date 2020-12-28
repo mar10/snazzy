@@ -58,6 +58,12 @@ tasks:
     message: |
       Version {version}
 
+  # 'build': `setup.py bdist_wheel`
+  - task: build
+    targets:
+      - sdist
+      - bdist_wheel
+
   # 'push': Push changes and tags
   - task: push
     tags: true              # Use `--follow-tags`
