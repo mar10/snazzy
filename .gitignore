@@ -2,6 +2,7 @@
 _build/
 htmlcov/
 dist/
+dist.yabs/
 *.egg-info/
 __pycache__
 .coverage

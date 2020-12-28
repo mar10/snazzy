@@ -632,11 +632,11 @@
         },
         "yabs": {
             "hashes": [
-                "sha256:9dcad27da009d73bac602108643321335c07f4eff3b02ce2929735a047290027",
-                "sha256:c5c16a055566ad838276e65411e6955f1e0b089d8c812095fcf7f3de1a65285d"
+                "sha256:3f2dba9efb222be79a7340bdecd8bcf4906ab3aa525e191730a3fb6f1fa17a66",
+                "sha256:6c97151ffbd8cd6db7978ae3c0e9ab0e524f4a8581ff392ab7b2b8479d47c121"
             ],
             "index": "pypi",
-            "version": "==0.3.1"
+            "version": "==0.4.0"
         }
     }
 }
