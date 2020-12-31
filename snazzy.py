@@ -1,5 +1,5 @@
 # -*- coding: utf-8 -*-
-# (c) 2020 Martin Wendt and contributors; see https://github.com/mar10/snazzy
+# (c) 2020-2021 Martin Wendt and contributors; see https://github.com/mar10/snazzy
 # Licensed under the MIT license: https://www.opensource.org/licenses/mit-license.php
 """
 Stylish ANSI terminal colors and helpers.
