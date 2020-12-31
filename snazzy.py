@@ -378,7 +378,7 @@ def gray(text):
 
 def demo():
     def _dump(title, fg_color, bg_color):
-        COLUMNS = 8
+        COLUMNS = 8  # noqa N806
         sl = []
         for color in FG_MAP.keys():
             if "reset" in color:

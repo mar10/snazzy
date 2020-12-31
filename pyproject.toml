@@ -22,3 +22,8 @@ exclude = '''
 # See https://black.readthedocs.io/en/stable/compatible_configs.html
 profile = "black"
 src_paths = ["snazzy.py", "tests"]
+
+
+# [tool.flake8]
+# Flake8 currently does not support pyproject.toml.
+# See [flake8] section in setup.cfg instead.
