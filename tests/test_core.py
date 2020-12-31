@@ -9,6 +9,7 @@ from snazzy import (
     Snazzy,
     ansi,
     ansi_reset,
+    cleanup_ansi_codes,
     colors_enabled,
     demo,
     emoji,
@@ -52,6 +53,10 @@ class TestBasics:
             print("foo", file=buf)
         buf.seek(0)
         assert buf.read() == "\x1b[91mfoo\n\x1b[39m"
+
+        s = wrap("foo", underline=True)
+        assert s == "\x1b[4mfoo\x1b[24m"
+        assert cleanup_ansi_codes(s) == "foo"
 
         # Result depends on platform
         assert emoji("❌", "X")

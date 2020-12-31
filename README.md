@@ -51,7 +51,7 @@ with Snazzy(fg="green", bg="black"))
     print("This is so eighties...")
 ```
 
-The context manager pattern is syntactic sugar for for this explicit code:
+The context manager pattern is syntactic sugar for this explicit code:
 
 ```py
 print(ansi("green", bg="black"), end="")
@@ -143,5 +143,16 @@ print("{} this is a bug.".format(emoji("❌", red("X"))))
 print(emoji("✨ 🍰 ✨", ":-)"))
 ```
 
-**Note:** Currently we assume that Windows does not support emojis, but
-other terminals do.
+**Note:** Currently we assume that on Windows CMD and Powershell don't support 
+emojis, but 'Windows Terminal' does.
+Linux and macOS platforms are supposed to support emojis.
+
+### Tools
+
+The `cleanup_ansi_codes(s)` method removes ANSI codes from a string:
+
+```py
+s = wrap("foo", underline=True)
+assert s == "\x1b[4mfoo\x1b[24m"
+assert cleanup_ansi_codes(s) == "foo"
+```
