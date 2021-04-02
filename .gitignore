@@ -7,3 +7,4 @@ dist.yabs/
 __pycache__
 .coverage
 coverage.xml
+.DS_Store
