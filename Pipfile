@@ -4,7 +4,7 @@ verify_ssl = true
 name = "pypi"
 
 [dev-packages]
-black = "==19.10b0"
+black = "==21.9b0"
 flake8 = "*" #"~=3.5"
 flake8-bugbear = "*" # "~=18.2"
 flake8-quotes = "*" # "~=1.0"
@@ -12,7 +12,7 @@ isort = "*"
 pylint = "*"
 pytest = "*"
 pytest-cov = "*"
-tox = "~=3.2"
+tox = "*" # "~=3.2"
 yabs = "*"
 
 
@@ -23,4 +23,4 @@ python_version = "3.9"
 
 [pipenv]
 # TODO: remove this when black and sty releases a real version
-allow_prereleases = true
+# allow_prereleases = true

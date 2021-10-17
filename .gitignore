@@ -6,5 +6,6 @@ dist.yabs/
 *.egg-info/
 __pycache__
 .coverage
+.coverage.*
 coverage.xml
 .DS_Store
