@@ -22,7 +22,7 @@ ANSI_ESCAPE_8BIT_STR = re.compile(
     r"(?:\x1B[@-Z\\-_]|[\x80-\x9A\x9C-\x9F]|(?:\x1B\[|\x9B)[0-?]*[ -/]*[@-~])"
 )
 ANSI_ESCAPE_8BIT_BYTES = re.compile(
-    br"(?:\x1B[@-Z\\-_]|[\x80-\x9A\x9C-\x9F]|(?:\x1B\[|\x9B)[0-?]*[ -/]*[@-~])"
+    rb"(?:\x1B[@-Z\\-_]|[\x80-\x9A\x9C-\x9F]|(?:\x1B\[|\x9B)[0-?]*[ -/]*[@-~])"
 )
 
 
@@ -192,7 +192,11 @@ class Snazzy:
             cls._support_emoji = False
         elif sys.platform == "win32":
             # Windows CMD and Powershell don't support emojis, but 'Windows Terminal' does
-            if not os.environ.get("WT_SESSION"):
+            # and so do the VScode terminals
+            if (
+                not os.environ.get("WT_SESSION")
+                and os.environ.get("TERM_PROGRAM") != "vscode"
+            ):
                 cls._support_emoji = False
         return
 
