@@ -22,8 +22,8 @@ tasks:
     github: true            # GitHub repo name valid and online accessible
     clean: true             # Repo must/must not contain modifications
     os: null                # (str, list)
-    python: ">=3.8"         # SemVer specifier
-    twine: true             # `twine` is available
+    pypi: true              # `twine` is available, PyPI package accessible
+    python: ">=3.9"         # SemVer specifier
     up_to_date: true        # everything pulled from remote
     venv: true              # running inside a virtual environment
     version: true           # `setup.py --version` returns the configured version
