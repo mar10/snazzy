@@ -2,7 +2,7 @@
 
 > Stylish ANSI terminal colors and helpers.
 
-[![Build Status](https://travis-ci.org/mar10/snazzy.svg?branch=master)](https://travis-ci.org/mar10/snazzy)
+[![Build Status](https://travis-ci.org/mar10/snazzy.svg?branch=master)](https://travis-ci.com/github/mar10/snazzy)
 [![Latest Version](https://img.shields.io/pypi/v/snazzy.svg)](https://pypi.python.org/pypi/snazzy/)
 [![License](https://img.shields.io/pypi/l/snazzy.svg)](https://github.com/mar10/snazzy/blob/master/LICENSE)
 [![Coverage Status](https://coveralls.io/repos/github/mar10/snazzy/badge.svg?branch=master)](https://coveralls.io/github/mar10/snazzy?branch=master)
